@@ -9,12 +9,16 @@ const router = createRouter({
         },
         {
             path: '/home',
-            component: () => import ('@/views/home/home.vue'), //路由懒加载
+            component: () => import('@/views/home/home.vue'), //路由懒加载
         },
         {
             path: '/category',
-            component: () => import ('@/views/category/category.vue'), 
+            component: () => import('@/views/category/category.vue'), 
         },
+        {
+            path: '/article',
+            component: () => import('@/views/article/article.vue'),
+        }
     ]
 })
 
