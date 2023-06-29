@@ -17,7 +17,7 @@
 </template>
 
 <script setup>
-    import { computed, ref } from 'vue'
+    import { computed } from 'vue'
     import { useRoute, useRouter } from 'vue-router'
     const route = useRoute()
     const router = useRouter()
@@ -37,6 +37,7 @@
         left: 0;
         right: 0;
         padding: 0 32px;
+        z-index: 9;
         .el-menu-item.logo{
             font-size: 24px;
             font-weight: 600;

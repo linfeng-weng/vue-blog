@@ -1,12 +1,13 @@
 <template>
-    <home-header/>
-    <section class="container">
-        <el-row :gutter="20">
-            <el-col :span="18"><home-articles/></el-col>
-            <el-col :span="6"><home-user/></el-col>
-        </el-row>
-    </section>
-    
+    <div class="home">
+        <home-header/>
+        <div class="container">
+            <el-row :gutter="20">
+                <el-col :span="18"><home-articles/></el-col>
+                <el-col :span="6"><home-user/></el-col>
+            </el-row>
+        </div>
+    </div>
     
     
     
@@ -19,10 +20,11 @@
 </script>
 
 <style lang="less" scoped>
-
-    .el-col {
-        padding: 0 !important;
-        border-radius: 4px;
-        border: 1px solid #000;
+    .home {
+        
+        .el-col {
+            padding: 0 !important;
+        }
     }
+   
 </style>

@@ -1,6 +1,6 @@
 <template>
     <div class="home-articles">
-        
+        <template v-for="i in 10">
             <div class="article">
                 <div class="left">
                     <div class="title">Vue3项目搭建</div>
@@ -13,7 +13,7 @@
                     </div>
                 </div>
             </div>
-
+        </template>
     </div>
 </template>
 
@@ -26,11 +26,11 @@
         .article {
             display: flex;
             align-items: center;
-            margin: 10px 20px;
-            padding: 0 20px;
+            margin: 20px;
+            padding: 0 15px 0 30px;
             height: 180px;
             box-shadow: 0 4px 14px hsl(355deg 25%  15% / 10%);
-            border-radius: 0.5rem;
+            border-radius: 8px;
             .left {
                 display: flex;
                 flex-direction: column;
@@ -58,8 +58,10 @@
                 .cover {
                     margin-left: 20px;
                     width: 250px;
-                    background-color: #000;
+                    // border-radius: 8px;
                     img {
+                        width: 100%;
+                        border-radius: 8px;
                         object-fit: cover;
                         object-position: center;
                     }
