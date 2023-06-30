@@ -1,16 +1,13 @@
 <template>
     <div class="home">
-        <home-header/>
+        <home-header />
         <div class="container">
             <el-row :gutter="20">
-                <el-col :span="18"><home-articles/></el-col>
-                <el-col :span="6"><home-user/></el-col>
+                <el-col :span="17"><home-articles /></el-col>
+                <el-col :span="7"><home-user /></el-col>
             </el-row>
         </div>
     </div>
-    
-    
-    
 </template>
 
 <script setup>
@@ -20,11 +17,10 @@
 </script>
 
 <style lang="less" scoped>
-    .home {
-        
-        .el-col {
-            padding: 0 !important;
-        }
+.home {
+
+    .el-col {
+        padding: 0 !important;
     }
-   
+}
 </style>
