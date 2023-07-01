@@ -1,5 +1,5 @@
 <template>
-    <div class="home-user">
+    <div class="user-card">
         <div class="user">
             <div class="avatar">
                 <img src="@/assets/img/头像1.jpg" alt="">
@@ -34,7 +34,7 @@
 </script>
 
 <style lang="less" scoped>
-.home-user {
+.user-card {
     position: sticky;
     top: 80px;
 
