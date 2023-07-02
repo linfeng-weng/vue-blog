@@ -71,7 +71,12 @@
         generation）两个代。新生代用于存放新创建的对象，老生代用于存放经过一定时间仍然存活的对象。
       </p>
     </div>
-    <div class="share">
+    <div class="bottom">
+      <div class="tag">
+        <div>标签：</div>
+        <span>vue</span>
+        <span>前端</span>
+      </div>
       <i class="iconfont icon-fenxiang"></i>
     </div>
   </div>
@@ -88,11 +93,22 @@
   letter-spacing: 0.3px;
   text-align: justify;
 
-  .share {
-    margin: 10px;
+  .bottom {
+    margin: 20px 0 10px;
     display: flex;
-    justify-content: end;
+    align-items: center;
+    justify-content: space-between;
 
+    .tag {
+      display: flex;
+      color: #919291;
+      column-gap: 10px;
+
+      span {
+        background-color: #f7f8fa;
+        padding: 2px 5px;
+      }
+    }
 
     i:hover {
       cursor: pointer;

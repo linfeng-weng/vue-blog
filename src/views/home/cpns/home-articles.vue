@@ -1,5 +1,11 @@
 <template>
   <div class="home-articles">
+    <div class="post-filter">
+      <span class="filter-item active">全部</span>
+      <span class="filter-item">知识</span>
+      <span class="filter-item">生活</span>
+      <span class="filter-item">前端</span>
+    </div>
     <template v-for="items in article">
       <div class="article">
         <div class="left">
@@ -8,7 +14,7 @@
               {{ items.title }}
             </div>
             <div class="category">
-              <i class="iconfont icon-wenjianjia1"></i>
+              <i class="iconfont icon-wenjianjia"></i>
               <p>{{ items.category }}</p>
             </div>
           </div>
@@ -33,12 +39,33 @@
 
 <style lang="less" scoped>
 .home-articles {
+  .post-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    column-gap: 24px;
+    margin: 10px 20px;
+    padding: 10px;
+
+    .filter-item {
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .active {
+      background: var(--second-color);
+      color: #fff;
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+  }
+
   .article {
     display: flex;
     align-items: center;
     margin: 20px;
     padding: 0 15px 0 30px;
-    height: 180px;
+    height: 190px;
     box-shadow: 0 4px 14px hsl(355deg 25% 15% / 10%);
     border-radius: 8px;
 
@@ -66,12 +93,16 @@
         .category {
           display: flex;
           align-items: center;
-          column-gap: 2px;
+          column-gap: 5px;
           color: #9a9a9a;
+          font-size: 14px;
+
+          i {
+            font-size: 12px;
+          }
 
           p {
             margin: 0;
-            font-size: 14px;
             width: 32px;
             height: 16px;
             line-height: 16px;
@@ -86,6 +117,12 @@
         -webkit-line-clamp: 2;
         -webkit-box-orient: vertical;
         overflow: hidden;
+
+        * {
+          font-size: 16px;
+          font-weight: inherit;
+          font-style: inherit;
+        }
       }
 
       .message {
