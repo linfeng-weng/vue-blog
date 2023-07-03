@@ -16,6 +16,10 @@ const router = createRouter({
             component: () => import('@/views/category/category.vue'), 
         },
         {
+            path: '/tag',
+            component: () => import('@/views/tag/tag.vue'), 
+        },
+        {
             path: '/archive',
             component: () => import('@/views/archive/archive.vue'), 
         },

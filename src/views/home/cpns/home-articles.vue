@@ -93,7 +93,7 @@
         .category {
           display: flex;
           align-items: center;
-          column-gap: 5px;
+          column-gap: 6px;
           color: #9a9a9a;
           font-size: 14px;
 
