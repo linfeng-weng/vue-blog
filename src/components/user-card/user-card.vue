@@ -1,5 +1,5 @@
 <template>
-    <div class="user-card">
+    <div class="user-card unselectable">
         <div class="user">
             <div class="avatar">
                 <img src="@/assets/img/头像1.jpg" alt="">

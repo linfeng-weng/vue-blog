@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-bar">
+  <div class="nav-bar unselectable">
     <el-menu :default-active="activeIndex" mode="horizontal" :ellipsis="false" @select="handleSelect">
       <el-menu-item index="/" class="logo">欲知<span style="color: var(--second-color);">新</span></el-menu-item>
       <div class="flex-grow" />

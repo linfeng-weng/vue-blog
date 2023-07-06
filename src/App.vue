@@ -9,6 +9,4 @@
     import Copyright from '@/components/copyright/copyright.vue'
 </script>
 
-<style lang="less" scoped>
-
-</style>
+<style lang="less" scoped></style>

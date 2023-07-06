@@ -20,3 +20,7 @@
     min-height: 80vh;
     margin: 32px 150px;
 }
+
+.unselectable {
+    user-select: none;
+  }

@@ -1,6 +1,6 @@
 <template>
   <div class="home-articles">
-    <div class="post-filter">
+    <div class="post-filter unselectable">
       <span class="filter-item active">全部</span>
       <span class="filter-item">知识</span>
       <span class="filter-item">生活</span>
