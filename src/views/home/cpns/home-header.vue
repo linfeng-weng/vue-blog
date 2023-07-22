@@ -23,6 +23,7 @@
 
     .home-text {
         text-align: center;
+        cursor: default;
 
         h2 {
             font-size: 56px;
@@ -34,6 +35,7 @@
 
         p {
             letter-spacing: 3px;
+            margin-top: 20px;
         }
     }
 }

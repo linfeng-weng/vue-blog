@@ -5,10 +5,10 @@
             <span>分类：</span>
         </div>
         <div class="items">
-            <template v-for="i in 6">
+            <template v-for="item in categoryData" :key="item.name">
                 <div class="item">
                     <i class="iconfont icon-wenjianjia"></i>
-                    <span>前端(5)</span>
+                    <span>{{ item.name }} ({{ item.num }})</span>
                 </div>
             </template>
         </div>
@@ -16,7 +16,12 @@
 </template>
 
 <script setup>
-    
+    import { ref } from 'vue'
+    import { getCategory } from '@/service'
+    const categoryData = ref([])
+    getCategory().then(res => {
+        categoryData.value = res.category
+    })
 </script>
 
 <style lang="less" scoped>
@@ -42,6 +47,7 @@
         .item {
             padding: 10px 0;
             display: flex;
+            color: #6e6e6e;
             column-gap: 6px;
             letter-spacing: 1px;
             cursor: pointer;

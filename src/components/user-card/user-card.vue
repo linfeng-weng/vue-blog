@@ -9,15 +9,15 @@
             <div class="article-message">
                 <div class="sort">
                     <div>文章</div>
-                    <div>15</div>
+                    <div>{{ cardMessage.articleCount }}</div>
                 </div>
                 <div class="sort">
                     <div>分类</div>
-                    <div>5</div>
+                    <div>{{ cardMessage.categoryCount }}</div>
                 </div>
                 <div class="sort">
                     <div>标签</div>
-                    <div>8</div>
+                    <div>{{ cardMessage.tagCount }}</div>
                 </div>
             </div>
             <div class="other-message">
@@ -30,7 +30,26 @@
 </template>
 
 <script setup>
-    
+    import { reactive } from 'vue'
+    import { totalArticle, totalCategory, totalTag } from '@/service'
+
+    const cardMessage = reactive({
+        articleCount: 0,
+        categoryCount: 0,
+        tagCount: 0
+    })
+
+    totalArticle().then( res => {
+        cardMessage.articleCount = res.total
+    })
+    totalCategory().then( res => {
+        cardMessage.categoryCount = res.total
+    })
+    totalTag().then( res => {
+        cardMessage.tagCount = res.total
+    })
+
+
 </script>
 
 <style lang="less" scoped>

@@ -5,9 +5,9 @@
             <span>标签：</span>
         </div>
         <div class="items">
-            <template v-for="i in 16">
+            <template v-for="item in tagData" :key="item.name">
                 <div class="item">
-                    <span>vue(5)</span>
+                    <span>{{ item.name }} ({{ item.num }})</span>
                 </div>
             </template>
         </div>
@@ -15,7 +15,12 @@
 </template>
 
 <script setup>
-    
+    import { ref } from 'vue'
+    import { getTag } from '@/service'
+    const tagData = ref([])
+    getTag().then(res => {
+        tagData.value = res.tags
+    })
 </script>
 
 <style lang="less" scoped>
@@ -37,11 +42,11 @@
         align-items: center;
         flex-wrap: wrap;
         column-gap: 20px;
-        color: #919291;
+        color: #777777;
 
         .item {
             margin: 12px 0;
-            padding: 4px 5px;
+            padding: 5px 8px;
             font-size: 14px;
             letter-spacing: 1px;
             cursor: pointer;

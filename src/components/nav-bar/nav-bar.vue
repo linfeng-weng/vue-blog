@@ -1,6 +1,6 @@
 <template>
   <div class="nav-bar unselectable">
-    <el-menu :default-active="activeIndex" mode="horizontal" :ellipsis="false" @select="handleSelect">
+    <el-menu :default-active="activeIndex" mode="horizontal" :ellipsis="false" router>
       <el-menu-item index="/" class="logo">欲知<span style="color: var(--second-color);">新</span></el-menu-item>
       <div class="flex-grow" />
       <el-menu-item index="/home">首页</el-menu-item>
@@ -15,11 +15,8 @@
     import { computed } from 'vue'
     import { useRoute, useRouter } from 'vue-router'
     const route = useRoute()
-    const router = useRouter()
     const activeIndex = computed(() => route.path)
-    const handleSelect = (key) => {
-      router.push(key)
-    }
+    
 </script>
 
 <style lang="less" scoped>

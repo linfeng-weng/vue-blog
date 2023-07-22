@@ -1,6 +1,6 @@
 <template>
     <div class="copyright">
-        <p>&#169; 2023 <a href="#">欲知新</a></p>
+        <p>Copyright &#169; 2023 <a href="#">欲知新</a></p>
     </div>
 </template>
 
