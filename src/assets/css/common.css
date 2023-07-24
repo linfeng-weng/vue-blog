@@ -16,11 +16,30 @@
     background: var(--second-color);
 }
 
-.container {
-    min-height: 80vh;
-    margin: 32px 150px;
-}
-
 .unselectable {
     user-select: none;
-  }
+}
+
+
+.container {
+    min-height: 80vh;
+    margin: 32px 120px;
+}
+
+@media(max-width: 1200px) {
+    .container {
+        margin: 20px 100px;
+    }
+}
+
+@media(max-width: 992px) {
+    .container {
+        margin: 20px 50px;
+    }
+}
+
+@media(max-width: 800px) {
+    .container {
+        margin: 15px 30px;
+    }
+}

@@ -1,7 +1,13 @@
 <template>
     <div class="category container">
         <layout>
-            <template #left><category-items /></template>
+            <template #left>
+                <router-view v-slot="{ Component }">
+                    <keep-alive>
+                        <component :is="Component" />
+                    </keep-alive>
+                </router-view>
+            </template>
             <template #right><user-card /></template>
         </layout>
     </div>
@@ -9,7 +15,6 @@
 
 <script setup>
     import Layout from '@/components/layout/layout.vue'
-    import CategoryItems from './cpns/category-items.vue'
     import UserCard from '@/components/user-card/user-card.vue'
 </script>
 

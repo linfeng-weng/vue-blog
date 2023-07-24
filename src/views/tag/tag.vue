@@ -1,7 +1,13 @@
 <template>
     <div class="tag container">
         <layout>
-            <template #left><tag-items /></template>
+            <template #left>
+                <router-view v-slot="{ Component }">
+                    <keep-alive>
+                        <component :is="Component" />
+                    </keep-alive>
+                </router-view>
+            </template>
             <template #right><user-card /></template>
         </layout>
     </div>
@@ -9,7 +15,6 @@
 
 <script setup>
     import Layout from '@/components/layout/layout.vue'
-    import TagItems from './cpns/tag-items.vue'
     import UserCard from '@/components/user-card/user-card.vue'
 </script>
 

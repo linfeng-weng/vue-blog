@@ -14,10 +14,30 @@ const router = createRouter({
         {
             path: '/category',
             component: () => import('@/views/category/category.vue'), 
+            children: [
+                {
+                    path: '',
+                    component: () => import('@/views/category/cpns/category-items.vue')
+                },
+                {
+                    path: ':name',
+                    component: () => import('@/views/category/cpns/category-post.vue')
+                }
+            ]
         },
         {
             path: '/tag',
             component: () => import('@/views/tag/tag.vue'), 
+            children: [
+                {
+                    path: '',
+                    component: () => import('@/views/tag/cpns/tag-items.vue')
+                },
+                {
+                    path: ':name',
+                    component: () => import('@/views/tag/cpns/tag-post.vue')
+                }
+            ]
         },
         {
             path: '/archive',

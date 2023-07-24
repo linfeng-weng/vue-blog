@@ -21,7 +21,7 @@
                 </div>
             </div>
             <div class="other-message">
-                <a href="https://github.com/linfeng-weng">
+                <a href="https://github.com/linfeng-weng" target="_blank">
                     <i class="iconfont icon-github"></i>
                 </a>
             </div>
@@ -108,6 +108,62 @@
             }
         }
 
+    }
+}
+
+// 响应式
+@media(max-width: 1400px) {
+    .user-card {
+        .user {
+            row-gap: 20px;
+            margin: 20px 10px;
+            padding: 50px 10px 20px;
+
+            .avatar {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    }
+}
+
+@media(max-width: 1200px) {
+    .user-card {
+        position: static;
+
+        .user {
+            row-gap: 18px;
+            margin: 10px 25px;
+            padding: 40px 10px 10px;
+        }
+    }
+}
+
+@media(max-width: 800px) {
+    .user-card {
+
+        // display: none;
+
+
+        .user {
+            row-gap: 15px;
+            margin: 10px 0;
+            margin-bottom: 0;
+            padding-top: 20px;
+            box-shadow: none;
+
+            .avatar {
+                display: none;
+            }
+
+            .username {
+                display: none;
+            }
+
+            .intro {
+                display: none;
+            }
+        }
     }
 }
 </style>

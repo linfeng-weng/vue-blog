@@ -6,10 +6,12 @@
         </div>
         <div class="items">
             <template v-for="item in categoryData" :key="item.name">
-                <div class="item">
-                    <i class="iconfont icon-wenjianjia"></i>
-                    <span>{{ item.name }} ({{ item.num }})</span>
-                </div>
+                <router-link :to="/category/ + item.name">
+                    <div class="item">
+                        <i class="iconfont icon-wenjianjia"></i>
+                        <span>{{ item.name }} ({{ item.num }})</span>
+                    </div>
+                </router-link>
             </template>
         </div>
     </div>

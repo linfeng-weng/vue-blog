@@ -23,4 +23,17 @@
         color: #999aaa;
     }
 }
+
+@media(max-width: 1200px) {
+    .copyright {
+        margin-top: 20px;
+    }
+}
+
+@media(max-width: 800px) {
+    .copyright {
+        margin-top: 10px;
+        margin-bottom: 5px;
+    }
+}
 </style>

@@ -39,4 +39,16 @@
         }
     }
 }
+
+@media(max-width: 800px) {
+    .home-header {
+        height: 400px;
+
+        .home-text {
+            h2 {
+                font-size: 48px;
+            }
+        }
+    }
+}
 </style>

@@ -6,9 +6,11 @@
         </div>
         <div class="items">
             <template v-for="item in tagData" :key="item.name">
-                <div class="item">
-                    <span>{{ item.name }} ({{ item.num }})</span>
-                </div>
+                <router-link :to="/tag/ + item.name">
+                    <div class="item">
+                        <span>{{ item.name }} ({{ item.num }})</span>
+                    </div>
+                </router-link>
             </template>
         </div>
     </div>

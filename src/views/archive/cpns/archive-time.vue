@@ -74,6 +74,10 @@
             border-left: 2px solid #e5e7eb;
             transition: all 0.3s;
             cursor: pointer;
+            display: -webkit-box;
+            -webkit-line-clamp: 1;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
 
             .date {
                 padding: 6px;

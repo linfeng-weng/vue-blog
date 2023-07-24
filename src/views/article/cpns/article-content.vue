@@ -59,4 +59,24 @@
     }
   }
 }
+
+@media(max-width: 1330px) {
+  .article-content {
+    margin: 0 200px;
+  }
+}
+
+@media(max-width: 1080px) {
+  .article-content {
+    margin: 0 90px;
+    padding: 10px 10px;
+  }
+}
+
+@media(max-width: 880px) {
+  .article-content {
+    margin: 0 40px;
+    padding: 10px 0;
+  }
+}
 </style>

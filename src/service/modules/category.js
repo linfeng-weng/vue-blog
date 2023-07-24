@@ -14,7 +14,7 @@ export function totalCategory() {
 
 export function getArticleByCName(name) {
     return http.get({
-        url: `/tags/${name}`
+        url: `/categories/${name}`
     })
 }
 

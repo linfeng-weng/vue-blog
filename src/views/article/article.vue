@@ -21,7 +21,7 @@
         post_page.value = res.article
         isShow = true
     })
-    
+
 </script>
 
 <style lang="less" scoped></style>

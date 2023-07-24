@@ -31,9 +31,6 @@
         display: flex;
         flex-direction: column;
         align-items: center;
-        max-width: 1000px;
-        margin: auto;
-        width: 100%;
 
         h1 {
             margin: 0;
@@ -63,6 +60,48 @@
                 height: 450px;
                 object-fit: cover;
                 object-position: center;
+            }
+        }
+    }
+}
+
+@media(max-width: 880px) {
+    .post-header {
+        height: 500px;
+
+        .header-content {
+            h1 {
+                font-size: 32px;
+            }
+
+            p {
+                margin: 20px 0;
+            }
+
+            .cover {
+                height: 400px;
+                margin: 0 10px;
+
+                img {
+                    height: 400px;
+                }
+            }
+        }
+    }
+}
+
+@media(max-width: 600px) {
+    .post-header {
+        margin-bottom: 20px;
+
+        .header-content {
+            .cover {
+                height: 280px;
+                margin: 0 10px;
+
+                img {
+                    height: 280px;
+                }
             }
         }
     }

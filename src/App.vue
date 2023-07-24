@@ -1,6 +1,10 @@
 <template>
     <nav-bar></nav-bar>
-    <router-view></router-view>
+    <router-view v-slot="{ Component }">
+        <keep-alive :exclude="['article']">
+            <component :is="Component" />
+        </keep-alive>
+    </router-view>
     <copyright></copyright>
 </template>
 
