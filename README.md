@@ -1,29 +1,28 @@
 # vue-blog
 
-This template should help get you started developing with Vue 3 in Vite.
+博客后台管理：[vue-blog](https://github.com/linfeng-weng/vue-blog-admin)
+博客后端：[vue-blog-server](https://github.com/linfeng-weng/vue-blog-server)
 
-## Recommended IDE Setup
+## 技术栈
 
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
+- `Vue3` `Vue-Router` `Pinia` `Axios`
+- 脚手架： `Vite`
+- 组件库： `Element-Plus`
 
-## Customize configuration
+## 安装
 
-See [Vite Configuration Reference](https://vitejs.dev/config/).
+1.安装依赖
 
-## Project Setup
-
-```sh
-npm install
+```
+    $ npm install
 ```
 
-### Compile and Hot-Reload for Development
+2.运行服务
 
-```sh
-npm run dev
+```
+    $ npm run dev
 ```
 
-### Compile and Minify for Production
+---
 
-```sh
-npm run build
-```
+_持续完善中..._
