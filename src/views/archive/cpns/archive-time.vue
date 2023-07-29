@@ -97,4 +97,15 @@
         }
     }
 }
+
+// 响应式
+@media(max-width:540px) {
+    .archive-time {
+        margin: 0;
+        box-shadow: none;
+        padding: 10px 20px;
+        font-size: 14px;
+    }
+
+}
 </style>

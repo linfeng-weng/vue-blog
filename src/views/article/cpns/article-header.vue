@@ -106,4 +106,30 @@
         }
     }
 }
+
+@media(max-width: 540px) {
+    .post-header {
+        padding-top: 70px;
+        height: 350px;
+
+        .header-content {
+
+            h1 {
+                font-size: 22px;
+            }
+
+            p {
+                font-size: 12px;
+            }
+
+            .cover {
+                height: 200px;
+
+                img {
+                    height: 200px;
+                }
+            }
+        }
+    }
+}
 </style>

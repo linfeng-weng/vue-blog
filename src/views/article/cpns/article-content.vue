@@ -79,4 +79,32 @@
     padding: 10px 0;
   }
 }
+
+
+@media(max-width: 540px) {
+  .article-content {
+    margin: 0 10px;
+    font-size: 14px;
+
+    .content {
+
+      :deep(h1) {
+        font-size: 24px;
+      }
+
+      :deep(h2) {
+        font-size: 18px;
+      }
+
+      :deep(h3) {
+        font-size: 16px;
+      }
+
+      :deep(img) {
+        width: 100% !important;
+        height: 100% !important;
+      }
+    }
+  }
+}
 </style>

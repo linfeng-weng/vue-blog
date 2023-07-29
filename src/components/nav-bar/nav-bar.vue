@@ -20,24 +20,50 @@
 </script>
 
 <style lang="less" scoped>
-.flex-grow {
-  flex-grow: 1;
+.nav-bar {
+  .flex-grow {
+    flex-grow: 1;
+  }
+
+  .el-menu {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 0 32px;
+    z-index: 9;
+
+    .el-menu-item.logo {
+      font-size: 24px;
+      font-weight: 600;
+      border-bottom: none;
+      color: #000 !important;
+      background-color: #fff;
+    }
+  }
 }
 
-.el-menu {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: 0 32px;
-  z-index: 9;
+// 响应式
+@media(max-width:540px) {
+  .nav-bar {
+    .el-menu {
+      height: 50px;
+      padding: 0;
+      padding-right: 5px;
 
-  .el-menu-item.logo {
-    font-size: 24px;
-    font-weight: 600;
-    border-bottom: none;
-    color: #000 !important;
-    background-color: #fff;
+      .el-menu-item {
+        font-size: 14px;
+        padding: 0 10px;
+      }
+
+      .el-menu-item.logo {
+        font-size: 18px;
+        font-weight: 600;
+        border-bottom: none;
+        color: #000 !important;
+        background-color: #fff;
+      }
+    }
   }
 }
 </style>

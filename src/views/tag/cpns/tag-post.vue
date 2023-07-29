@@ -9,14 +9,18 @@
 </template>
 
 <script setup>
+    import { onActivated } from 'vue'
     import ArticleModel from '@/components/article-model/article-model.vue'
     import { useRoute } from 'vue-router'
     import useTagStore from '@/stores/modules/tag'
     import { storeToRefs } from 'pinia'
     const route = useRoute()
     const tagStore = useTagStore()
-    tagStore.fetchArticleByTName(route.params.name)
     const { tagArticle } = storeToRefs(tagStore)
+
+    onActivated(() => {
+        tagStore.fetchArticleByTName(route.params.name)
+    })
     
 
 

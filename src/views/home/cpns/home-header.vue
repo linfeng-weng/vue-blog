@@ -51,4 +51,21 @@
         }
     }
 }
+
+@media(max-width:540px) {
+    .home-header {
+        margin: 50px 0 0;
+        height: 250px;
+
+        .home-text {
+            h2 {
+                font-size: 32px;
+            }
+
+            p {
+                font-size: 12px;
+            }
+        }
+    }
+}
 </style>

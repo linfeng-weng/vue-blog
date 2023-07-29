@@ -2,7 +2,7 @@
     <div class="user-card unselectable">
         <div class="user">
             <div class="avatar">
-                <img src="@/assets/img/头像1.jpg" alt="">
+                <img src="@/assets/img/avatar.jpg" alt="">
             </div>
             <div class="username">欲知新</div>
             <div class="intro">To learn something new</div>
