@@ -12,7 +12,7 @@
                             <p>{{ item.category }}</p>
                         </div>
                     </div>
-                    <div class="content" v-html="item.content"></div>
+                    <div class="content">{{ item.abstract }}</div>
                     <div class="message">{{ formatDate(item.created_at, 'YYYY-MM-DD') }}</div>
                 </div>
                 <div class="right">
@@ -117,17 +117,6 @@
                 -webkit-line-clamp: 2;
                 -webkit-box-orient: vertical;
                 overflow: hidden;
-
-                :deep(*) {
-                    font-size: 16px;
-                    font-weight: inherit;
-                    font-style: inherit;
-                }
-
-                :deep(img) {
-                    display: none;
-                }
-
             }
 
             .message {
@@ -191,8 +180,6 @@
 @media(max-width: 540px) {
     .article-model {
         .article {
-            // display: flex;
-            // flex-direction: column;
             margin: 8px 0;
             padding: 0 6px 0 15px;
             height: 100px;
@@ -220,10 +207,7 @@
 
                 .content {
                     height: 28px;
-
-                    :deep(*) {
-                        font-size: 12px;
-                    }
+                    font-size: 12px;
                 }
 
                 .message {
@@ -232,13 +216,10 @@
             }
 
             .right {
-                width: 150px;
-                height: 80px;
-
                 .cover {
                     margin-left: 5px;
                     width: 110px;
-                    height: 90px;
+                    height: 80px;
 
                     img {
                         width: 110px;
@@ -247,6 +228,18 @@
                     }
                 }
 
+            }
+        }
+    }
+}
+
+@media(max-width: 375px) {
+    .article-model {
+        .article {
+            border: 1px solid #f0f0f0;
+
+            .right {
+                display: none;
             }
         }
     }

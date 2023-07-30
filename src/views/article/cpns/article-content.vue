@@ -6,15 +6,21 @@
         <div>标签：</div>
         <span v-for="item in articleData.tags" :key="item">{{ item }}</span>
       </div>
-      <i class="iconfont icon-fenxiang"></i>
+      <i class="iconfont icon-fenxiang" @click="shareLink"></i>
     </div>
   </div>
 </template>
 
 <script setup>
+  import copyLink from '@/utils/copyLink'
    defineProps({
         articleData: null
     })
+
+    const shareLink = () => {
+      copyLink()
+    }
+    
 </script>
 
 <style lang="less" scoped>
@@ -31,6 +37,36 @@
     :deep(*) {
       margin: revert;
       padding: revert;
+      list-style: revert;
+    }
+
+    :deep(ul) {
+      padding-left: 25px;
+    }
+
+    :deep(ol) {
+      padding-left: 25px;
+    }
+
+    :deep(pre) {
+      background-color: #f7f7f7;
+      padding: 10px;
+      border-radius: 5px;
+      font-family: 'Courier New', monospace;
+      overflow: auto;
+    }
+
+    :deep(img) {
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    :deep(blockquote) {
+      background-color: #f7f7f7;
+      border-left: 5px solid #fd8f44;
+      padding: 10px;
+      margin: 10px 0;
+      font-style: italic;
     }
   }
 
@@ -100,10 +136,7 @@
         font-size: 16px;
       }
 
-      :deep(img) {
-        width: 100% !important;
-        height: 100% !important;
-      }
+
     }
   }
 }
