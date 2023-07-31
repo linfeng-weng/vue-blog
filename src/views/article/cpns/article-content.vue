@@ -57,8 +57,8 @@
     }
 
     :deep(img) {
-      width: 100% !important;
-      height: 100% !important;
+      max-width: 100% !important;
+      height: auto !important;
     }
 
     :deep(blockquote) {
