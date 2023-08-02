@@ -30,10 +30,10 @@ export default function useScroll(elRef) {
 
     const scrollListenerHandler = throttle(() => {
         clientHeight.value = el === window ? document.documentElement.clientHeight : el.clientHeight
-        scrollTop.value = el === window ? document.documentElement.scrollTop : el.scrollTop
+        scrollTop.value = el === window ? document.documentElement.scrollTop || document.body.scrollTop : el.scrollTop
         scrollHeight.value = el === window ? document.documentElement.scrollHeight : el.scrollHeight
         // console.log(clientHeight.value,scrollTop.value,scrollHeight.value)
-        if(clientHeight.value + scrollTop.value + 1 >= scrollHeight.value ) {
+        if(clientHeight.value + scrollTop.value + 15 >= scrollHeight.value ) {
             isReachBottom.value = true
         }
 

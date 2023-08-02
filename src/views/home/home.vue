@@ -11,7 +11,7 @@
 </template>
 
 <script setup>
-    import { watch, onBeforeMount } from 'vue'
+    import { watch } from 'vue'
     import HomeHeader from './cpns/home-header.vue'
     import ArticleModel from '@/components/article-model/article-model.vue'
     import UserCard from '@/components/user-card/user-card.vue'
@@ -24,7 +24,7 @@
     articleStore.fetchTotalArticle()
     const { articleList, currentPage, total } = storeToRefs(articleStore)
 
-    const { isReachBottom, scrollTop } = useScroll()
+    const { isReachBottom } = useScroll()
 
     watch(isReachBottom, (newValue) => {
         // console.log(articleList.value.length,total.value)
