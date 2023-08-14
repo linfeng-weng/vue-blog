@@ -14,6 +14,8 @@
 
     
     const route = useRoute()
+
+    // 数据获取完毕前不显示页面
     let isShow = false
     const post_page = ref({})
 

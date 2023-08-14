@@ -20,7 +20,9 @@
 <script setup>
     import { ref } from 'vue'
     import { getCategory } from '@/service'
+
     const categoryData = ref([])
+    
     getCategory().then(res => {
         categoryData.value = res.category
     })

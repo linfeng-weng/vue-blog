@@ -19,6 +19,7 @@
     import useArticleStore from '@/stores/modules/article'
     import { storeToRefs } from 'pinia'
     import useScroll from '@/utils/useScroll'
+    
     const articleStore = useArticleStore()
     articleStore.fetchArticleList()
     articleStore.fetchTotalArticle()
@@ -26,6 +27,7 @@
 
     const { isReachBottom } = useScroll()
 
+    // 触底加载更多
     watch(isReachBottom, (newValue) => {
         // console.log(articleList.value.length,total.value)
         if (newValue && articleList.value.length !== total.value) {

@@ -13,10 +13,11 @@
 
 <script setup>
   import copyLink from '@/utils/copyLink'
-   defineProps({
+  defineProps({
         articleData: null
     })
 
+    // 分享链接
     const shareLink = () => {
       copyLink()
     }
