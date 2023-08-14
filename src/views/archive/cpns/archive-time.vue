@@ -3,7 +3,7 @@
         <template v-for="blockData in archive">
             <div class="month-box">
                 <h1>{{ blockData.blockTitle }}</h1>
-                <template v-for="article in blockData.articles">
+                <template v-for="article in blockData.articles" :key="article._id">
                     <div class="article" @click="viewPost(article._id)">
                         <span class="date">{{ dayjs(article.created_at).format('YYYY-MM-DD') }}</span>
                         <span class="title">{{ article.title }}</span>
@@ -21,16 +21,20 @@
     import { storeToRefs } from 'pinia'
     import router from '@/router'
     
+    // 新建Store实例
     const articleStore = useArticleStore()
     
+    // 获取所有文章数据-响应式
     const { allArticle } = storeToRefs(articleStore)
     
     const archive = ref([])
+
+    // 用于将文章格式化并按最新时间排列归档的函数
     const getFormatArchive = () => {
         let currentBlock = null
-        allArticle
         allArticle.value.forEach((article) => {
             const blockTitle = dayjs(article.created_at).format('YYYY-MM')
+            // 检查是否要创建新的时间块
             if(!currentBlock || currentBlock.blockTitle !== blockTitle) {
                 currentBlock = { blockTitle, articles: [] }
                 archive.value.unshift(currentBlock)
@@ -39,11 +43,13 @@
         })
     }
 
+    // 点击跳转到对应文章界面
     const viewPost = (id) => {
         router.push(`/article/${id}`)
     }
     
     onBeforeMount(async () => {
+        // 初始化数据
         await articleStore.fetchAllArticle()
         getFormatArchive()
     })
