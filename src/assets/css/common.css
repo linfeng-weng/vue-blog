@@ -1,51 +1,27 @@
 :root {
-    --container-color: #1a1e21;
-    --second-color: #fd8f44;
-    --text-color: #172317;
-    --bg-color: #fff;
+  --container-color: #1a1e21;
+  --second-color: #fd8f44;
+  --text-color: #172317;
+  --bg-color: #f7f9fe;
+  --box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 4px;
 
-    --el-text-color-primary: var(--text-color) !important;
-    --el-menu-item-font-size: 16px !important;
-    --el-color-primary: var(--second-color) !important;
-    --el-menu-hover-bg-color: #fff !important;
-
+  --el-text-color-primary: var(--text-color) !important;
+  --el-menu-item-font-size: 16px !important;
+  --el-color-primary: var(--second-color) !important;
+  --el-menu-hover-bg-color: #fff !important;
 }
 
 ::selection {
-    color: var(--bg-color);
-    background: var(--second-color);
+  color: var(--bg-color);
+  background: var(--second-color);
 }
 
 .unselectable {
-    user-select: none;
+  user-select: none;
 }
-
 
 .container {
-    min-height: 80vh;
-    margin: 32px 120px;
-}
-
-@media(max-width: 1200px) {
-    .container {
-        margin: 20px 100px;
-    }
-}
-
-@media(max-width: 992px) {
-    .container {
-        margin: 20px 50px;
-    }
-}
-
-@media(max-width: 800px) {
-    .container {
-        margin: 15px 30px;
-    }
-}
-
-@media(max-width: 540px) {
-    .container {
-        margin: 5px 15px;
-    }
+  min-height: 80vh;
+  margin: 0 auto;
+  max-width: 1140px;
 }

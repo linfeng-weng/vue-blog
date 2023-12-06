@@ -1,42 +1,57 @@
-import axios from "axios"
-import { BASE_URL, TIMEOUT } from "./config"
+import axios from 'axios'
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+import { BASE_URL, TIMEOUT } from './config'
+
+NProgress.configure({
+  showSpinner: false // 禁用转圈效果
+})
 
 // axios封装
 class Http {
-    constructor(baseURL, timeout=10000) {
-        this.instance = axios.create({
-            baseURL,
-            timeout
+  constructor(baseURL, timeout = 10000) {
+    this.instance = axios.create({
+      baseURL,
+      timeout
+    })
+
+    this.instance.interceptors.request.use(
+      (config) => {
+        NProgress.start()
+        return config
+      },
+      (err) => {
+        return Promise.reject(err)
+      }
+    )
+
+    this.instance.interceptors.response.use(
+      (res) => {
+        NProgress.done()
+        return res
+      },
+      (err) => {
+        return Promise.reject(err)
+      }
+    )
+  }
+
+  request(config) {
+    return new Promise((resolve, reject) => {
+      this.instance
+        .request(config)
+        .then((res) => {
+          resolve(res.data)
         })
+        .catch((err) => {
+          reject(err)
+        })
+    })
+  }
 
-        this.instance.interceptors.request.use(config => {
-            return config
-          }, err => {
-            return Promise.reject(err)
-          })
-
-          this.instance.interceptors.response.use(res => {
-            return res
-          }, err => {
-            return Promise.reject(err)
-          })
-
-        }
-
-        request(config) {
-            return new Promise((resolve, reject) => {
-                this.instance.request(config).then(res => {
-                    resolve(res.data)
-                }).catch(err => {
-                    reject(err)
-                })
-            })
-        }
-    
-        get(config) {
-            return this.request({ ...config, method: "get" })
-        }
+  get(config) {
+    return this.request({ ...config, method: 'get' })
+  }
 }
-
 
 export default new Http(BASE_URL, TIMEOUT)
