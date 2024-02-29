@@ -1,49 +1,48 @@
 <template>
-  <div class="category-items">
+  <div class="category-items border-common">
     <div class="title">
       <i class="iconfont icon-fenlei"></i>
       <span>分类：</span>
     </div>
     <div class="items">
       <template v-for="item in categoryData" :key="item.name">
-        <router-link :to="/category/ + item.name">
-          <div class="item">
-            <i class="iconfont icon-wenjianjia"></i>
-            <span>{{ item.name }} ({{ item.num }})</span>
-          </div>
-        </router-link>
+        <div class="item" @click="itemClick(item._id, item.name)">
+          <i class="iconfont icon-wenjianjia"></i>
+          <span>{{ item.name }} ({{ item.num }})</span>
+        </div>
       </template>
     </div>
   </div>
 </template>
 
 <script setup>
-import { getCategory } from '@/service'
+import { getCategoryApi } from '@/service'
+import router from '@/router'
+import useCategoryStore from '@/stores/modules/category'
+import { storeToRefs } from 'pinia'
+
+const categoryStore = useCategoryStore()
+const { nameChosen } = storeToRefs(categoryStore)
 
 const categoryData = ref([])
 
-// getCategory().then(res => {
-//         console.log('cate')
-//         categoryData.value = res.category
-// })
+const itemClick = (id, name) => {
+  nameChosen.value = name
+  router.push(`/category/${id}`)
+}
 
 onMounted(() => {
-  console.log(1)
-  getCategory().then((res) => {
-    console.log('cate')
-    categoryData.value = res.category
+  getCategoryApi().then((res) => {
+    categoryData.value = res.data
   })
 })
 </script>
 
 <style lang="less" scoped>
 .category-items {
-  margin: 0 25px;
+  margin: 20px 25px;
   padding: 40px;
-  box-shadow: var(--box-shadow);
-  border-radius: 8px;
   color: var(--text-color);
-  background-color: #fff;
 
   .title {
     display: flex;
@@ -53,12 +52,13 @@ onMounted(() => {
   .items {
     margin: 25px 50px;
     display: flex;
-    justify-content: center;
+    // justify-content: center;
     align-items: center;
     flex-wrap: wrap;
     column-gap: 50px;
 
     .item {
+      margin: 5px 0;
       padding: 10px 0;
       display: flex;
       align-items: center;

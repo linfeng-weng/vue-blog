@@ -1,5 +1,5 @@
 <template>
-  <div class="archive-time">
+  <div class="archive-time border-common">
     <template v-for="blockData in archive">
       <div class="month-box">
         <h1>{{ blockData.blockTitle }}</h1>
@@ -36,7 +36,7 @@ const getFormatArchive = () => {
     // 检查是否要创建新的时间块
     if (!currentBlock || currentBlock.blockTitle !== blockTitle) {
       currentBlock = { blockTitle, articles: [] }
-      archive.value.unshift(currentBlock)
+      archive.value.push(currentBlock)
     }
     currentBlock.articles.push(article)
   })
@@ -56,11 +56,8 @@ onBeforeMount(async () => {
 
 <style lang="less" scoped>
 .archive-time {
-  margin: 0 25px;
+  margin: 20px 25px;
   padding: 50px 90px;
-  box-shadow: var(--box-shadow);
-  border-radius: 8px;
-  background-color: #fff;
 
   .month-box {
     margin: 50px 0;
@@ -76,7 +73,7 @@ onBeforeMount(async () => {
       height: 30px;
       line-height: 30px;
       border-left: 2px solid #e5e7eb;
-      transition: all 0.3s;
+      transition: all 0.2s;
       cursor: pointer;
       display: -webkit-box;
       -webkit-line-clamp: 1;
@@ -94,9 +91,9 @@ onBeforeMount(async () => {
       }
 
       &:hover {
-        transform: scale(1.03);
+        transform: scale(1.02);
         border-left: 2px solid var(--second-color);
-        transition: all 0.3s;
+        transition: all 0.2s;
       }
     }
   }
@@ -105,6 +102,8 @@ onBeforeMount(async () => {
 // 响应式
 @media (max-width: 540px) {
   .archive-time {
+    margin: 0 10px;
+    background-color: #f7f9fe;
     box-shadow: none;
     padding: 10px 15px;
     font-size: 14px;

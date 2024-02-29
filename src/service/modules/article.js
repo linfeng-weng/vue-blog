@@ -1,26 +1,23 @@
-import http from '../request'
+import { http } from '../request'
 
-export function totalArticle() {
-  return http.get({
-    url: '/articles/total'
-  })
-}
-
-export function getAllArticle() {
-  return http.get({
-    url: '/articles/all'
-  })
-}
-
-export function getArticle(page) {
+// 获取文章列表(可分页)
+export function getArticleApi(params) {
   return http.get({
     url: '/articles',
-    params: { page }
+    params
   })
 }
 
-export function getArticleById(id) {
+// 根据id获取文章
+export function getArticleByIdApi(id) {
   return http.get({
     url: `/articles/${id}`
+  })
+}
+
+// 搜索文章
+export function searchArticleApi(s) {
+  return http.get({
+    url: `/articles/search/${s}`
   })
 }

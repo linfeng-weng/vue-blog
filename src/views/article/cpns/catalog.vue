@@ -1,5 +1,5 @@
 <template>
-  <div class="catalog">
+  <div class="catalog border-common">
     <div class="header">目录</div>
     <div class="titles" ref="catalogRef">
       <div
@@ -36,15 +36,12 @@ const { scrollTop, clientHeight, isReachBottom } = useScroll()
 
 let currentDistance = 0
 const titleClick = (offsetTop, index) => {
-  isClick.value = true
   currentDistance = offsetTop - clientHeight.value / 2
-  window.scrollTo(0, currentDistance)
   currentIndex.value = index
+  window.scrollTo(0, currentDistance)
 }
 
 watch(scrollTop, () => {
-  if (Number(scrollTop.value.toFixed(0)) - Number(currentDistance.toFixed(0)) === 0) isClick.value = false
-  if (isClick.value) return
   if (isReachBottom.value) {
     currentIndex.value = props.titleList.length - 1
     isReachBottom.value = false
@@ -52,7 +49,9 @@ watch(scrollTop, () => {
   }
 
   props.titleList.forEach((item, index) => {
-    if (Number(scrollTop.value.toFixed(0)) >= item.offsetTop - clientHeight.value / 2) currentIndex.value = index
+    if (Number(Math.ceil(scrollTop.value).toFixed(0)) >= item.offsetTop - clientHeight.value / 2) {
+      currentIndex.value = index
+    }
   })
 })
 
@@ -71,10 +70,6 @@ watch(currentIndex, (newValue) => {
   margin-top: 30px;
   padding: 20px 10px;
   width: 280px;
-
-  background-color: #fff;
-  box-shadow: var(--box-shadow);
-  border-radius: 5px;
 
   .header {
     // background-color: yellow;

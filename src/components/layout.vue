@@ -15,8 +15,9 @@
 .layout {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   width: 100%;
+  padding: 20px 20px;
   .left {
     flex: 1;
   }

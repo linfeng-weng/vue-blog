@@ -1,18 +1,12 @@
-import http from '../request'
+import { http } from '../request'
 
-export function getCategory() {
+export function getCategoryApi() {
   return http.get({
     url: '/categories'
   })
 }
 
-export function totalCategory() {
-  return http.get({
-    url: '/categories/total'
-  })
-}
-
-export function getArticleByCName(name) {
+export function getArticleByCidApi(name) {
   return http.get({
     url: `/categories/${name}`
   })

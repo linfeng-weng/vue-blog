@@ -1,27 +1,25 @@
-import { getArticle, totalArticle, getAllArticle } from '@/service'
+import { getArticleApi } from '@/service'
 import { defineStore } from 'pinia'
 
 export const useArticleStore = defineStore('article', {
   state: () => ({
+    isloading: true,
     articleList: [],
-    currentPage: 0,
+    currentPage: 1,
+    pageSize: 6,
     total: 0,
     allArticle: []
   }),
   actions: {
     async fetchArticleList() {
-      const res = await getArticle(this.currentPage)
-      // this.articleList = res.article
-      this.articleList.push(...res.article)
-      // console.log('fetchArticle', this.articleList)
-    },
-    async fetchTotalArticle() {
-      const res = await totalArticle()
+      const res = await getArticleApi({ page: this.currentPage, limit: this.pageSize })
+      this.isloading = false
       this.total = res.total
+      this.articleList = res.data
     },
     async fetchAllArticle() {
-      const res = await getAllArticle()
-      this.allArticle = res.article
+      const res = await getArticleApi()
+      this.allArticle = res.data
     }
   }
 })

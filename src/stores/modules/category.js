@@ -1,13 +1,14 @@
 import { defineStore } from 'pinia'
-import { getArticleByCName } from '@/service'
+import { getArticleByCidApi } from '@/service'
 
 const useCategoryStore = defineStore('category', {
   state: () => ({
-    categoryArticle: []
+    categoryArticle: [],
+    nameChosen: ''
   }),
   actions: {
-    async fetchArticleByCName(name) {
-      const res = await getArticleByCName(name)
+    async fetchArticleByCid(id) {
+      const res = await getArticleByCidApi(id)
       this.categoryArticle = res.articles
     }
   }

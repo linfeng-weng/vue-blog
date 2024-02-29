@@ -3,7 +3,7 @@
     <div class="header">
       <div class="left">
         <i class="iconfont icon-wenjianjia"></i>
-        <h3>{{ route.params.name }}</h3>
+        <h3>{{ nameChosen }}</h3>
       </div>
       <div class="right">
         <p @click="$router.go(-1)">返回</p>
@@ -20,11 +20,11 @@ import useCategoryStore from '@/stores/modules/category'
 import { storeToRefs } from 'pinia'
 const route = useRoute()
 const categoryStore = useCategoryStore()
-const { categoryArticle } = storeToRefs(categoryStore)
+const { categoryArticle, nameChosen } = storeToRefs(categoryStore)
 
 onActivated(() => {
   categoryArticle.value = []
-  categoryStore.fetchArticleByCName(route.params.name)
+  categoryStore.fetchArticleByCid(route.params.id)
 })
 </script>
 

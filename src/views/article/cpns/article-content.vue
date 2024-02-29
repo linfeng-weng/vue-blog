@@ -2,7 +2,11 @@
   <div class="content-box container">
     <layout>
       <template #left>
-        <div class="article-content">
+        <div class="article-content border-common">
+          <div class="ai-abstract" v-if="articleData.aiAbstract">
+            <div class="robot"><img src="@/assets/img/AI.png" /></div>
+            <div class="abstract">&nbsp;&nbsp;{{ articleData.aiAbstract }}</div>
+          </div>
           <div
             class="content"
             :style="{ margin: 'initial', padding: 'initial' }"
@@ -12,7 +16,7 @@
           <div class="bottom">
             <div class="tag">
               <div>标签:</div>
-              <span v-for="item in articleData.tags" :key="item">{{ item }}</span>
+              <span v-for="item in articleData.tags" :key="item">{{ item.name ?? '' }}</span>
             </div>
             <i class="iconfont icon-fenxiang" @click="copyLink"></i>
           </div>
@@ -21,7 +25,7 @@
       <template #right>
         <div class="side">
           <userCard class="card"></userCard>
-          <catalog class="catalog-box" :titleList="titleList"></catalog>
+          <catalog v-show="showCatalog" class="catalog-box" :titleList="titleList"></catalog>
         </div>
       </template>
     </layout>
@@ -41,12 +45,15 @@ const props = defineProps({
 
 const articleRef = ref(null)
 const titleList = ref([])
+const showCatalog = ref(false)
 
 watch(
   () => props.articleData,
   async () => {
     await nextTick()
     const arr = await getCatalogStructure(articleRef)
+    if (!arr) return
+    showCatalog.value = true
     titleList.value = arr
   }
 )
@@ -60,14 +67,33 @@ watch(
   align-items: center;
   max-width: 820px;
   margin: auto;
+  margin-top: 20px;
   padding: 30px 60px;
   border-bottom: 1px solid #e7e7e7;
   line-height: 28px;
   letter-spacing: 0.3px;
-  background-color: #fff;
-  text-align: justify;
-  box-shadow: var(--box-shadow);
-  border-radius: 5px;
+  text-align: left;
+  font-size: 16px;
+
+  .ai-abstract {
+    column-gap: 10px;
+    padding: 20px;
+    border-radius: 10px;
+    // background-image: url('../../../assets/img/abstract-bg1.jpg');
+    background-color: #fff6f6;
+
+    .robot {
+      flex-shrink: 0;
+      width: 30px;
+      height: 30px;
+    }
+
+    .abstract {
+      font-weight: 700;
+      font-size: 14px;
+      color: #a5a5a5;
+    }
+  }
 
   .content {
     :deep(*) {
@@ -97,14 +123,15 @@ watch(
     :deep(ol) {
       padding-left: 25px;
     }
-
     :deep(p) {
       span {
-        font-size: 14px;
+        font-size: 16px !important;
         padding: 0 5px;
       }
     }
-
+    :deep(a) {
+      text-decoration: underline;
+    }
     :deep(pre) {
       background-color: #282c34;
       color: #c8c8c8;
@@ -114,11 +141,12 @@ watch(
       font-family: 'Fira Code', monospace;
       font-size: 14px;
       line-height: 1.5;
+      tab-size: 4;
     }
 
     :deep(img) {
       max-width: 100%;
-      height: auto;
+      height: auto !important;
     }
 
     :deep(blockquote) {
@@ -126,7 +154,6 @@ watch(
       border-left: 5px solid var(--second-color);
       padding: 10px;
       margin: 10px 0;
-      font-style: italic;
     }
   }
 
@@ -171,47 +198,4 @@ watch(
 }
 
 @import '@/assets/responsive/article-content.less';
-
-// @media(max-width: 1330px) {
-//   .article-content {
-//     margin: 0 200px;
-//   }
-// }
-
-// @media(max-width: 1080px) {
-//   .article-content {
-//     margin: 0 90px;
-//     padding: 10px 10px;
-//   }
-// }
-
-// @media(max-width: 880px) {
-//   .article-content {
-//     margin: 0 40px;
-//     padding: 10px 0;
-//   }
-// }
-
-// @media(max-width: 540px) {
-//   .article-content {
-//     margin: 0 10px;
-//     font-size: 14px;
-
-//     .content {
-
-//       :deep(h1) {
-//         font-size: 24px;
-//       }
-
-//       :deep(h2) {
-//         font-size: 18px;
-//       }
-
-//       :deep(h3) {
-//         font-size: 16px;
-//       }
-
-//     }
-//   }
-// }
 </style>

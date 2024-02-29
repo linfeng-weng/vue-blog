@@ -1,5 +1,5 @@
 <template>
-  <div class="article" v-show="isShow">
+  <div class="article">
     <article-header :articleData="post_page"></article-header>
     <article-content :articleData="post_page"></article-content>
     <tab-control v-show="showTabControl"></tab-control>
@@ -11,23 +11,20 @@ import ArticleHeader from './cpns/article-header.vue'
 import ArticleContent from './cpns/article-content.vue'
 import tabControl from './cpns/tab-control.vue'
 import { useRoute } from 'vue-router'
-import { getArticleById } from '@/service'
+import { getArticleByIdApi } from '@/service'
 import useScroll from '@/hooks/useScroll'
 
 const route = useRoute()
 
-// 数据获取完毕前不显示页面
-let isShow = false
 const post_page = ref({})
 
-getArticleById(route.params.id).then((res) => {
-  post_page.value = res.article
-  isShow = true
+getArticleByIdApi(route.params.id).then((res) => {
+  post_page.value = res.data
 })
 
 const { scrollTop } = useScroll()
 const showTabControl = computed(() => {
-  return scrollTop.value >= 660
+  return scrollTop.value >= 230
 })
 </script>
 

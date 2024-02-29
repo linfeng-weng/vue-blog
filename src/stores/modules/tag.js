@@ -1,13 +1,14 @@
 import { defineStore } from 'pinia'
-import { getArticleByTName } from '@/service'
+import { getArticleByTidApi } from '@/service'
 
 const useTagStore = defineStore('Tag', {
   state: () => ({
-    tagArticle: []
+    tagArticle: [],
+    nameChosen: ''
   }),
   actions: {
     async fetchArticleByTName(name) {
-      const res = await getArticleByTName(name)
+      const res = await getArticleByTidApi(name)
       this.tagArticle = res.articles
     }
   }

@@ -1,17 +1,23 @@
 <template>
   <div class="nav-bar unselectable" :class="{ change: isScroll }">
     <div class="logo-area">
-      <router-link to="/home" v-html="logo" class="logo"></router-link>
+      <div class="logo" v-html="logo" @click="logoClick"></div>
     </div>
     <div class="options">
       <template v-for="item in options" :key="item.name">
-        <router-link :to="item.path" class="option" :class="{ active: activeIndex === item.path }">{{ item.name }}</router-link>
+        <router-link
+          :to="item.path"
+          class="option"
+          :class="{ active: activeIndex === item.path }"
+          >{{ item.name }}</router-link
+        >
       </template>
     </div>
   </div>
 </template>
 
 <script setup>
+import router from '@/router'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
@@ -19,7 +25,8 @@ const options = [
   { name: '首页', path: '/home' },
   { name: '分类', path: '/category' },
   { name: '标签', path: '/tag' },
-  { name: '归档', path: '/archive' }
+  { name: '归档', path: '/archive' },
+  { name: '搜索', path: '/search' }
 ]
 
 const logo = import.meta.env.VITE_LOGO
@@ -27,6 +34,10 @@ const logo = import.meta.env.VITE_LOGO
 const activeIndex = computed(() => route.path)
 
 const isScroll = ref(true)
+
+const logoClick = () => {
+  router.push('/home')
+}
 
 const navbarScrollListenerHandler = () => {
   if (activeIndex.value !== '/home') return (isScroll.value = false)
@@ -83,6 +94,7 @@ onUnmounted(() => {
     font-size: 24px;
     font-weight: 600;
     padding: 0 20px;
+    cursor: pointer;
   }
   .options {
     display: flex;

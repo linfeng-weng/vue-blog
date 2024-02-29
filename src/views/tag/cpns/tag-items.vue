@@ -1,40 +1,45 @@
 <template>
-  <div class="tag-items">
+  <div class="tag-items border-common">
     <div class="title">
       <i class="iconfont icon-tianchongxing-"></i>
       <span>标签：</span>
     </div>
     <div class="items">
       <template v-for="item in tagData" :key="item.name">
-        <router-link :to="/tag/ + item.name">
-          <div class="item">
-            <span>{{ item.name }} ({{ item.num }})</span>
-          </div>
-        </router-link>
+        <div class="item" @click="itemClick(item._id, item.name)">
+          <span>{{ item.name }} ({{ item.num }})</span>
+        </div>
       </template>
     </div>
   </div>
 </template>
 
 <script setup>
-import { getTag } from '@/service'
+import { getTagApi } from '@/service'
+import router from '@/router'
+import useTagStore from '@/stores/modules/tag'
+import { storeToRefs } from 'pinia'
+
+const tagStore = useTagStore()
+const { nameChosen } = storeToRefs(tagStore)
 
 const tagData = ref([])
 
-getTag().then((res) => {
-  console.log('tag')
-  tagData.value = res.tags
+const itemClick = (id, name) => {
+  nameChosen.value = name
+  router.push(`/tag/${id}`)
+}
+
+getTagApi().then((res) => {
+  tagData.value = res.data
 })
 </script>
 
 <style lang="less" scoped>
 .tag-items {
-  margin: 0 25px;
+  margin: 20px 25px;
   padding: 40px;
-  box-shadow: var(--box-shadow);
-  border-radius: 8px;
   color: var(--text-color);
-  background-color: #fff;
 
   .title {
     display: flex;

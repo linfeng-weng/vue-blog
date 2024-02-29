@@ -1,19 +1,13 @@
-import http from '../request'
+import { http } from '../request'
 
-export function getTag() {
+export function getTagApi() {
   return http.get({
     url: '/tags'
   })
 }
 
-export function totalTag() {
+export function getArticleByTidApi(id) {
   return http.get({
-    url: '/tags/total'
-  })
-}
-
-export function getArticleByTName(name) {
-  return http.get({
-    url: `/tags/${name}`
+    url: `/tags/${id}`
   })
 }

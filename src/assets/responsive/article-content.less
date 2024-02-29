@@ -13,6 +13,19 @@
   .article-content {
     padding: 5px 10px;
     font-size: 14px;
+
+    .ai-abstract {
+      padding: 15px;
+      .robot {
+        width: 20px;
+        height: 20px;
+      }
+      .abstract {
+        font-size: 12px;
+        line-height: 24px;
+      }
+    }
+
     .content {
       :deep(h1) {
         font-size: 20px;
@@ -27,13 +40,19 @@
         padding: 10px;
         font-size: 12px;
       }
+      :deep(p) {
+        span {
+          font-size: 14px !important;
+          padding: 0 5px;
+        }
+      }
       :deep(blockquote) {
-        font-size: 14px;
+        font-size: 12px;
         line-height: 1.5;
         padding: 8px;
-        border-right: 1px solid #f0f0f0;
-        border-top: 1px solid #f0f0f0;
-        border-bottom: 1px solid #f0f0f0;
+        span {
+          font-size: 12px !important;
+        }
       }
     }
     .bottom {

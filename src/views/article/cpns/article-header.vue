@@ -3,7 +3,8 @@
     <div class="header-content">
       <h1>{{ articleData.title }}</h1>
       <p class="message-box">
-        发布于：<span>{{ formatDate(articleData.created_at, 'YYYY-MM-DD') }}</span>
+        <div>发布于：<span>{{ formatDate(articleData.created_at, 'YYYY-MM-DD') }}</span></div>
+        <div>浏览量：<span>{{ articleData.views }}</span></div>
         <!-- &#8194;&#8194; -->
         <!--更新于：<span>{{ formatDate(articleData.updated_at, 'YYYY-MM-DD') }}</span>-->
       </p>
@@ -55,6 +56,9 @@ defineProps({
     }
 
     .message-box {
+      display: flex;
+      align-items: center;
+      column-gap: 20px;
       margin: 32px 0;
       color: #fdfdfc;
 

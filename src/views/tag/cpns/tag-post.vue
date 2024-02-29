@@ -3,7 +3,7 @@
     <div class="header">
       <div class="left">
         <i class="iconfont icon-tianchongxing-"></i>
-        <h3>{{ route.params.name }}</h3>
+        <h3>{{ nameChosen }}</h3>
       </div>
       <div class="right">
         <p @click="$router.go(-1)">返回</p>
@@ -20,11 +20,11 @@ import useTagStore from '@/stores/modules/tag'
 import { storeToRefs } from 'pinia'
 const route = useRoute()
 const tagStore = useTagStore()
-const { tagArticle } = storeToRefs(tagStore)
+const { tagArticle, nameChosen } = storeToRefs(tagStore)
 
 onActivated(() => {
   tagArticle.value = []
-  tagStore.fetchArticleByTName(route.params.name)
+  tagStore.fetchArticleByTName(route.params.id)
 })
 </script>
 

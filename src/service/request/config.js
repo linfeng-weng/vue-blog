@@ -1,3 +1,3 @@
-export const Server_URL = import.meta.env.VITE_SERVER_URL
-export const BASE_URL = `${import.meta.env.VITE_SERVER_URL}/api`
+export const BASE_URL = `/api`
+export const Music_URL = 'https://mu-api.yuk0.com'
 export const TIMEOUT = 10000
