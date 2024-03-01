@@ -16,26 +16,20 @@
 </template>
 
 <script setup>
-import { getCategoryApi } from '@/service'
 import router from '@/router'
 import useCategoryStore from '@/stores/modules/category'
+import useUserCardStore from '@/stores/modules/userCard'
 import { storeToRefs } from 'pinia'
 
 const categoryStore = useCategoryStore()
+const userCardStroe = useUserCardStore()
 const { nameChosen } = storeToRefs(categoryStore)
-
-const categoryData = ref([])
+const { categoryData } = storeToRefs(userCardStroe)
 
 const itemClick = (id, name) => {
   nameChosen.value = name
   router.push(`/category/${id}`)
 }
-
-onMounted(() => {
-  getCategoryApi().then((res) => {
-    categoryData.value = res.data
-  })
-})
 </script>
 
 <style lang="less" scoped>

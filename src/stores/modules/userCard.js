@@ -4,26 +4,31 @@ import { getArticleApi, getCategoryApi, getTagApi, getUserinfoApi, addVisitsApi 
 const useUserCardStore = defineStore('UserCard', {
   state: () => ({
     articleCount: 0,
+    userinfo: {},
     categoryCount: 0,
+    categoryData: [],
     tagCount: 0,
-    userinfo: {}
+    tagData: []
   }),
   actions: {
-    getUserCardData() {
-      addVisitsApi()
-      getUserinfoApi().then((res) => {
-        this.userinfo = res.data[0]
-        localStorage.setItem('userinfo', JSON.stringify(this.userinfo))
-      })
-      getArticleApi({ page: 1, limit: 1 }).then((res) => {
-        this.articleCount = res.total
-      })
-      getCategoryApi().then((res) => {
-        this.categoryCount = res.total
-      })
-      getTagApi().then((res) => {
-        this.tagCount = res.total
-      })
+    async getUserCardData() {
+      try {
+        await addVisitsApi()
+        const [userinfoRes, articleRes, categoryRes, tagRes] = await Promise.all([
+          getUserinfoApi(),
+          getArticleApi({ page: 1, limit: 1 }),
+          getCategoryApi(),
+          getTagApi()
+        ])
+        this.userinfo = userinfoRes.data[0]
+        this.articleCount = articleRes.total
+        this.categoryCount = categoryRes.total
+        this.categoryData = categoryRes.data
+        this.tagCount = tagRes.total
+        this.tagData = tagRes.data
+      } catch (error) {
+        console.error('userCardError', error)
+      }
     }
   }
 })

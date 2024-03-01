@@ -1,12 +1,11 @@
 # vue-blog
 
-博客后台管理：[vue-blog](https://github.com/linfeng-weng/vue-blog-admin)
-博客后端：[vue-blog-server](https://github.com/linfeng-weng/vue-blog-server)
+后台管理：[vuets-blog-admin](https://github.com/linfeng-weng/vuets-blog-admin)
+后端：[vue-blog-server](https://github.com/linfeng-weng/vue-blog-server)
 
 ## 技术栈
 
-- `Vue3` `Vue-Router` `Pinia` `Axios`
-- 脚手架： `Vite`
+- `Vite` `Vue3` `Pinia` `Echarts` `WangEditor`
 - 组件库： `Element-Plus`
 
 ## 安装

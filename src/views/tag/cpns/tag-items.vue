@@ -15,24 +15,20 @@
 </template>
 
 <script setup>
-import { getTagApi } from '@/service'
 import router from '@/router'
 import useTagStore from '@/stores/modules/tag'
+import useUserCardStore from '@/stores/modules/userCard'
 import { storeToRefs } from 'pinia'
 
 const tagStore = useTagStore()
+const userCardStroe = useUserCardStore()
 const { nameChosen } = storeToRefs(tagStore)
-
-const tagData = ref([])
+const { tagData } = storeToRefs(userCardStroe)
 
 const itemClick = (id, name) => {
   nameChosen.value = name
   router.push(`/tag/${id}`)
 }
-
-getTagApi().then((res) => {
-  tagData.value = res.data
-})
 </script>
 
 <style lang="less" scoped>

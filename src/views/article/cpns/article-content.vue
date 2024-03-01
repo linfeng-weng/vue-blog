@@ -130,6 +130,7 @@ watch(
       }
     }
     :deep(a) {
+      color: #0269c8;
       text-decoration: underline;
     }
     :deep(pre) {

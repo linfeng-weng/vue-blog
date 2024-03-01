@@ -38,13 +38,15 @@ import NoticeBoard from './cpns/notice-board.vue'
 import MusicList from './cpns/music-list.vue'
 import Layout from '@/components/layout.vue'
 import useArticleStore from '@/stores/modules/article'
+import useUserCardStore from '@/stores/modules/userCard'
+
 import { storeToRefs } from 'pinia'
 
+const userCardStroe = useUserCardStore()
 const articleStore = useArticleStore()
 articleStore.fetchArticleList()
 const { articleList, currentPage, pageSize, total, isloading } = storeToRefs(articleStore)
-
-const userinfo = JSON.parse(localStorage.getItem('userinfo'))
+const { userinfo } = storeToRefs(userCardStroe)
 
 watch(currentPage, () => {
   articleStore.fetchArticleList()
